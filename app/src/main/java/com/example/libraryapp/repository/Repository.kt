@@ -8,5 +8,7 @@ class Repository (val booksDB: BooksDB){
         booksDB.bookDao().addBook(bookEntity)
     }
 
+    fun getAllBooks() = booksDB.bookDao().getAllBooks()
+
 
 }
