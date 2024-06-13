@@ -9,11 +9,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
 import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.viewmodel.BookViewModel
 
 @Composable
-fun UpdateScreen(viewModel: BookViewModel, bookId: String?){
+fun UpdateScreen(viewModel: BookViewModel, bookId: String?, navController: NavController){
 
     var inputBook by remember { mutableStateOf("") }
 
@@ -31,6 +32,7 @@ fun UpdateScreen(viewModel: BookViewModel, bookId: String?){
         Button(onClick = {
             var newBook = BookEntity(bookId!!.toInt(), inputBook)
             viewModel.updateBook(newBook)
+            navController.popBackStack()
         }) {
             Text(text = "Update Book")
         }
