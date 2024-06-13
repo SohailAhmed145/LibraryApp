@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -32,10 +31,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import com.example.libraryapp.repository.Repository
 import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.room.BooksDB
@@ -130,7 +127,7 @@ fun BookCard(viewModel: BookViewModel, book: BookEntity){
 @Composable
 fun BookList(viewModel: BookViewModel) {
     val books by viewModel.books.collectAsState(initial = emptyList())
-    LazyColumn (){
+    LazyColumn {
         items(items = books) {
             item -> BookCard(
             viewModel = viewModel,
