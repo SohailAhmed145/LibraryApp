@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,8 +14,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -98,7 +103,10 @@ fun BookCard(viewModel: BookViewModel, book: BookEntity){
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Row() {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly,
+        ) {
             Text(
                 text = book.id.toString(),
                 fontSize = 24.sp,
@@ -108,6 +116,12 @@ fun BookCard(viewModel: BookViewModel, book: BookEntity){
                 text = book.title,
                 fontSize = 24.sp,
             )
+            IconButton(onClick = { viewModel.deleteBook(book) }){
+                Icon(
+                    imageVector = Icons.Default.Delete ,
+                    contentDescription = "Delete"
+                )
+            }
         }
     }
 }

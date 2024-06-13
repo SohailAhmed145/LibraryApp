@@ -15,4 +15,10 @@ class BookViewModel (val repository: Repository): ViewModel(){
     }
 
     val books =  repository.getAllBooks()
+
+    fun deleteBook(book: BookEntity){
+        viewModelScope.launch {
+            repository.deleteBookFromRoom(book)
+        }
+    }
 }
