@@ -51,12 +51,15 @@ android {
 }
 
 dependencies {
+    
 
-    val room_version = "2.6.1"
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
 
-// To use Kotlin annotation processing tool (kapt)
+    // To use Kotlin annotation processing tool (kapt)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
