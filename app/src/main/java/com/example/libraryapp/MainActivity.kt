@@ -116,37 +116,44 @@ fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
 fun BookCard(viewModel: BookViewModel, book: BookEntity,navController: NavHostController){
     Card(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(horizontal = 18.dp, vertical = 8.dp)
             .fillMaxWidth()
     ) {
+
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Text(
                 text = book.id.toString(),
-                fontSize = 24.sp,
-                modifier = Modifier.padding(start = 4.dp, end = 4.dp)
+                fontSize = 20.sp,
+                modifier = Modifier.padding(start = 12.dp, end = 12.dp)
             )
             Text(
                 text = book.title,
-                fontSize = 24.sp,
+                modifier = Modifier.fillMaxSize(0.7f),
+                fontSize = 20.sp,
             )
-            IconButton(onClick = { viewModel.deleteBook(book) }){
-                Icon(
-                    imageVector = Icons.Default.Delete ,
-                    contentDescription = "Delete"
-                )
+            Row (
+                horizontalArrangement = Arrangement.End
+            ){
+                IconButton(onClick = { viewModel.deleteBook(book) }){
+                    Icon(
+                        imageVector = Icons.Default.Delete ,
+                        contentDescription = "Delete"
+                    )
+                }
+                IconButton(onClick = {
+                    navController.navigate("UpdateScreen/${book.id}")
+                }){
+                    Icon(
+                        imageVector = Icons.Default.Edit ,
+                        contentDescription = "Edit"
+                    )
+                }
             }
-            IconButton(onClick = {
-                navController.navigate("UpdateScreen/${book.id}")
-            }){
-                Icon(
-                    imageVector = Icons.Default.Edit ,
-                    contentDescription = "Edit"
-                )
-            }
+
         }
+
     }
 }
 
