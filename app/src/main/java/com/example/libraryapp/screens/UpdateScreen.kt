@@ -30,7 +30,7 @@ fun UpdateScreen(viewModel: BookViewModel, bookId: String?, navController: NavCo
         )
         
         Button(onClick = {
-            var newBook = BookEntity(bookId!!.toInt(), inputBook)
+            val newBook = BookEntity(bookId!!.toInt(), inputBook)
             viewModel.updateBook(newBook)
             navController.popBackStack()
         }) {
